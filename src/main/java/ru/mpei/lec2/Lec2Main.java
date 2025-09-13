@@ -1,14 +1,24 @@
 package ru.mpei.lec2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.mpei.lec2.inheritance.Educatable;
 import ru.mpei.lec2.inheritance.ParentPerson;
 import ru.mpei.lec2.inheritance.Student;
 import ru.mpei.lec2.inheritance.Teacher;
 
 public class Lec2Main {
+
+    static Logger log = LoggerFactory.getLogger(Lec2Main.class);
+
     public static void main(String[] args) {
         String s = "my String";
-        System.out.println(s);
+        log.trace("printed value of s {}", s);
+        log.debug("printed value of s {}", s);
+        log.info("printed value of s {}", s);
+        log.warn("printed value of s {}", s);
+        log.error("printed value of s {}", s);
+//        System.out.println(s);
 
         String s2 = new String("my String");
         System.out.println(s2);
