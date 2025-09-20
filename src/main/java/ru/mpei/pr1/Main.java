@@ -1,5 +1,7 @@
 package ru.mpei.pr1;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -52,6 +54,7 @@ public class Main {
         boolean eq = ps[0] == ps[1];
         boolean eq2 = ps[0].equals(ps[1]);
         System.out.println();
+
     }
 
 
