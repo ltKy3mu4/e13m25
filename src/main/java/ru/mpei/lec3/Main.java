@@ -21,7 +21,7 @@ public class Main {
         logger.info("res: " + res);
         List<String> data = null;
         try {
-            Path path = Paths.get("src/main/resources/fileTest4.txt");
+            Path path = Paths.get("src/main/resources/fileTest.txt");
             data = Files.readAllLines(path);
             logger.info("read: " + data);
         } catch (IOException e) {
@@ -41,7 +41,18 @@ public class Main {
             }
         }
 
-        int b = 2 / 0;
-        logger.info("b: " + b);
+//        int b = 2 / 0;
+//        logger.info("b: " + b);
+
+        try {
+            p.check(-123);
+        } catch (ArithmeticException | NumberFormatException | PalindromeException e) {
+            logger.error("excpetion occurred during checking:", e);
+            e.printStackTrace();
+        } catch (Exception e) {
+            logger.error("Unepectede excpetion occurred during checking:", e);
+        }
+
+        logger.info("finish");
     }
 }

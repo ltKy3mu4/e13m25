@@ -3,7 +3,7 @@ package ru.mpei.lec3;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-import ru.mpei.lec2.inheritance.Educatable;
+
 
 class PalyndromCheckerTest {
     PalindromeChecker p = new PalindromeChecker();
