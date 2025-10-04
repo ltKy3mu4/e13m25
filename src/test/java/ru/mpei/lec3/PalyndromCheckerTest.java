@@ -45,4 +45,5 @@ class PalyndromCheckerTest {
         Assertions.assertThrows(PalindromeException.class, e);
     }
 
+
 }

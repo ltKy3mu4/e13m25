@@ -1,5 +1,8 @@
 package ru.mpei.lec2.inheritance;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Teacher extends ParentPerson implements Educatable {
 
     private String department;
@@ -37,5 +40,21 @@ public class Teacher extends ParentPerson implements Educatable {
 
     public void setSubjects(String[] subjects) {
         this.subjects = subjects;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return Objects.equals(department, teacher.department) && Objects.deepEquals(subjects, teacher.subjects);
+    }
+
+    @Override
+    public int hashCode() {
+        int hashCode = super.lastName.hashCode()* 31 + firstName.hashCode() * 31 + super.age + 35 + department.hashCode() *12;
+        for (String s: subjects){
+            hashCode += s.hashCode() * 13;
+        }
+        return hashCode;
     }
 }

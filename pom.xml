@@ -35,6 +35,27 @@
             <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.tilab.jade/jade -->
+        <dependency>
+            <groupId>com.tilab.jade</groupId>
+            <artifactId>jade</artifactId>
+            <version>4.5.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>jade-repo</id>
+            <url>https://jade.tilab.com/maven/</url>
+        </repository>
+    </repositories>
 
 </project>

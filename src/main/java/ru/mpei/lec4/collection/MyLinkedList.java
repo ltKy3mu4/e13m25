@@ -1,9 +1,6 @@
 package ru.mpei.lec4.collection;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyLinkedList <T> implements List<T> {
 
@@ -45,6 +42,47 @@ public class MyLinkedList <T> implements List<T> {
     }
 
     @Override
+    public boolean remove(Object o) {
+        var e = head;
+        if (e == null) {
+            return false;
+        }
+        if (e.value.equals(o)) {
+            head = e.next;
+            head.prev = null;
+            return true;
+        }
+        while (e.hasNext()) {
+            e = e.next;
+            if (e.value.equals(o)) {
+                e.prev.next = e.next;
+                e.next.prev = e.prev;
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean contains(Object o) {
+        var e = head;
+        if (e == null) {
+            return false;
+        }
+        if(e.value.equals(o)) {
+            return true;
+        }
+        while (e.hasNext()) {
+            e = e.next;
+            if(e.value.equals(o)){
+                return true;
+            }
+
+
+        }
+        return false;
+    }
+
+    @Override
     public T remove(int index) {
         return null;
     }
@@ -65,14 +103,28 @@ public class MyLinkedList <T> implements List<T> {
         return false;
     }
 
-    @Override
-    public boolean contains(Object o) {
-        return false;
-    }
+
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        Iterator<T> it = new Iterator<T>() {
+            private ElementWrapper<T> current = head;
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (current == null) {
+                    throw new NoSuchElementException();
+                }
+                T val = current.value;
+                current = current.next;
+                return val;
+            }
+        };
+        return it;
     }
 
     @Override
@@ -86,10 +138,6 @@ public class MyLinkedList <T> implements List<T> {
     }
 
 
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
 
     @Override
     public boolean containsAll(Collection<?> c) {
@@ -141,7 +189,59 @@ public class MyLinkedList <T> implements List<T> {
 
     @Override
     public ListIterator<T> listIterator() {
-        return null;
+
+
+        ListIterator<T> it = new ListIterator<T>() {
+            private ElementWrapper<T> current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current.hasNext();
+            }
+
+            @Override
+            public T next() {
+                current = current.next;
+                return current.value;
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                return false;
+            }
+
+            @Override
+            public T previous() {
+                return null;
+            }
+
+            @Override
+            public int nextIndex() {
+                return 0;
+            }
+
+            @Override
+            public int previousIndex() {
+                return 0;
+            }
+
+            @Override
+            public void remove() {
+
+            }
+
+            @Override
+            public void set(T t) {
+
+            }
+
+            @Override
+            public void add(T t) {
+
+            }
+        };
+
+        return it;
     }
 
     @Override
