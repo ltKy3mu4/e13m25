@@ -5,6 +5,8 @@ import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import jade.lang.acl.ACLMessage;
 import lombok.extern.slf4j.Slf4j;
+import ru.mpei.lec5.model.HelloMsg;
+import ru.mpei.lec5.utils.JsonUtils;
 
 @Slf4j
 public class HelloSpammerBehaviour extends TickerBehaviour {
@@ -23,7 +25,7 @@ public class HelloSpammerBehaviour extends TickerBehaviour {
         log.warn("Spam spam spam {}", counter++);
 
         ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-        msg.setContent("Hello from "+myAgent.getLocalName());
+        msg.setContent(JsonUtils.toJson(new HelloMsg(myAgent.getLocalName(), counter)));
         msg.addReceiver(this.chooseReceiver());
 
         myAgent.send(msg);
