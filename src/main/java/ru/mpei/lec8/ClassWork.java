@@ -18,6 +18,13 @@ public class ClassWork {
                 new Equipment(10L, EqType.CircuitBreaker, "CB3", "Substation1", 4),
                 new Equipment(11L, EqType.Disconnector, "D3", "Substation2", 18)
         );
+
+        //TODO: 1.find all transformers older than 15 years print their scheme names
+        //TODO: 2.find all equipment related to ss 1 and calculate average age
+        //TODO: 3.find oldest equipment on ss2 print its type and age
+        //TODO: 4.find youngest equipment
+
+
     }
 
 }
