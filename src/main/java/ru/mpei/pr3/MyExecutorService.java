@@ -13,6 +13,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * и  внутренний класс TaskState, который определяет состояние задачи: Done, Canceld, Waiting
  * MyExecutorService хранит в себе заданное количество потоков (по дефолту 5), т.е. он может выполнить одновременно заданное количество методов execute
  */
+
+//TODO: Реализовать методы: executePeriodically and startPeriodical чтобы появилось возможность запуска периодических задач
+    //TODO: и они должны выполняться до их ручной отмены через класс Task -> cancel
+
 public class MyExecutorService {
 
 
@@ -31,9 +35,13 @@ public class MyExecutorService {
         this(5);
     }
 
-    public TaskState execute(Runnable r, long delayMs) {
+    public Task execute(Runnable r, long delayMs) {
         taskQueue.add(new RunnableWrapper(r, delayMs));
-        return new TaskState(State.Waiting);
+        return new Task(State.Waiting);
+    }
+
+    public Task executePeriodically(Runnable r, long delayMs){
+
     }
 
     private void start() {
@@ -58,6 +66,10 @@ public class MyExecutorService {
         enigneThread.start();
     }
 
+    private void startPeriodical() {
+
+    }
+
 
     private void sleep(long time) {
         try {
@@ -69,8 +81,12 @@ public class MyExecutorService {
 
     @Data
     @AllArgsConstructor
-    public static class TaskState {
+    public static class Task {
         private State state;
+
+
+        public void cancel(){}
+
     }
 
     @Data
