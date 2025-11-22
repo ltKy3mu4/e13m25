@@ -15,7 +15,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 //TODO: Реализовать методы: executePeriodically and startPeriodical чтобы появилось возможность запуска периодических задач
-    //TODO: и они должны выполняться до их ручной отмены через класс Task -> cancel
+
+/**
+ * 1.метод executePeriodically должен начать выполнение задачи с заданным периодом
+ * 2.Предусмотреть, что периодически можно выполнять только 5 задач параллельно
+ * 3. Сделать отмену выполнения задачи через метод cancel внутри класс Task
+ */
 
 public class MyExecutorService {
 
